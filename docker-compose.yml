@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  express:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /src
+    volumes:
+      - ./src:/src
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    command: nodemon -L server.js
+
+  mongo:
+    image: mongo:latest
+    expose:
+      - 27017
+    volumes:
+      - ./src/data/db:/data/db
