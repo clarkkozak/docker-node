@@ -2,8 +2,8 @@ FROM mhart/alpine-node:latest
 
 WORKDIR /src
 
-RUN npm install -g nodemon
-
 RUN npm i
+
+RUN npm install -g nodemon
 
 # CMD ["nodemon", "index.js"]
