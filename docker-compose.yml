@@ -15,7 +15,7 @@ services:
       NODE_ENV: development
     ports:
       - "3000:3000"
-    command: nodemon -L server.js
+    command: nodemon -L server/server.js
 
   mongo:
     container_name: mongo
