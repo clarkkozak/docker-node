@@ -4,10 +4,13 @@ const { MongoClient, ObjectId} = require('mongodb')
 const db_url = 'mongodb://mongo:27017'
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const port = 3000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
+
+app.use(express.static('client'))
 
 // Connect to MongoDB and get the databases and collection
 MongoClient.connect(db_url, { useNewUrlParser: true }, function(err, client) {
@@ -17,13 +20,13 @@ MongoClient.connect(db_url, { useNewUrlParser: true }, function(err, client) {
  }
 
  console.log('Connected to MongoDB')
+ console.log(`API running at localhost:${port}/node_test. Client running at localhost:${port}`)
 
 })
 
-app.get('/', (req, res) => {
+app.get('/node_test', (req, res) => {
   console.log('Connection from ' + req.ip)
-  res.send('sweet')
+  res.send('node tests')
 })
 
-
-app.listen(3000, () => console.log('Server running'))
+app.listen(port, () => console.log(`API running at localhost:${port}/node_test. Client running at localhost:${port}`))
