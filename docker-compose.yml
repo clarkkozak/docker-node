@@ -14,12 +14,13 @@ services:
     environment:
       NODE_ENV: development
     ports:
-      - 3000:3000
+      - "3000:3000"
     command: nodemon -L server.js
 
   mongo:
+    container_name: mongo
     image: mongo:latest
-    expose:
-      - 27017
+    ports: 
+      - "27017:27017"
     volumes:
       - ./src/data/db:/data/db

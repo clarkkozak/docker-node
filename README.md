@@ -10,3 +10,5 @@ docker-compose -p node_project -f docker-compose.yml up
 ```
 
 Now in the /src the index.js will run and update on changes thanks to nodemon.
+
+Additionaly, it also runs a MongoDB instance. 
