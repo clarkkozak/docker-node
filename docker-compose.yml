@@ -14,11 +14,10 @@ services:
     environment:
       NODE_ENV: development
     ports:
-      - "3000:3000"
-    command: nodemon -L server/server.js
+      - "8080:8080"
+    command: nodemon -L ./src/server.js
 
   mongo:
-    container_name: mongo
     image: mongo:latest
     ports: 
       - "27017:27017"
